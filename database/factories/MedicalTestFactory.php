@@ -17,9 +17,9 @@ class MedicalTestFactory extends Factory
     public function definition(): array
     {
         return [
-            'nombre' => $this->faker->name,
-            'tipo' => $this->faker->randomElement(['Sangre','Completo','Acidos','Glucosa','Dermatologico']),
-            'cost' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 1000),
+            'nombre' => $this->faker->randomElement(['Completo','Recuento','Electrolitos','Hemoglobina','Hepatica']),
+            'tipo' => $this->faker->randomElement(['Hematologia','Sanquinea','Renal','Tolerancia']),
+            'costo' => $this->faker->randomFloat($nbMaxDecimals = 2, $min = 10, $max = 1000),
             'tiempo_resultado' => $this->faker->dateTimeBetween($startDate = '-1 years', $endDate = 'now', $timezone = null),
         ];
     }

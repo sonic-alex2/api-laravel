@@ -1,8 +1,10 @@
 <?php
 
-use App\Http\Controllers\ApiAuthUserController;
-use App\Http\Controllers\PatientController;
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Controllers\PatientController;
+use App\Http\Controllers\ApiAuthUserController;
+use App\Http\Controllers\MedicalTestController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,7 +20,7 @@ Route::post('auth/registro',[ApiAuthUserController::class,'store']);
 Route::post('auth/ingresar',[ApiAuthUserController::class,'login']);
 
 Route::middleware('auth:sanctum')->group( function () {
-    Route::resource('pacientes', PatientController::class,[
+    Route::apiResource('pacientes', PatientController::class,[
         /* 'names' => [
             'index' => 'lista-pacientes',
             'create' => 'crear-paciente',
@@ -26,7 +28,14 @@ Route::middleware('auth:sanctum')->group( function () {
         'parameters' => [
             'pacientes' => 'patient',
         ],
-    ])->except('create','edit');
+    ]);
+
+    Route::apiResource('p-medicas', MedicalTestController::class,[
+        'parameters' => [
+            'p-medicas' => 'medicalTest',
+        ],
+    ]);
+
     //return $request->user();
     Route::get('auth/salir',[ApiAuthUserController::class,'logout']);
 });

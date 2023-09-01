@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Carbon\Carbon;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -59,7 +58,7 @@ class ApiAuthUserController extends Controller
 
         if(!Auth::attempt($request->only('email','password'))){
             return response()->json([
-                'estatus' => true,
+                'estatus' => false,
                 'errores' => "No se logro la autorizacion!",
             ],401);
         }
@@ -92,7 +91,7 @@ class ApiAuthUserController extends Controller
 
         return response()->json([
             'status' => true,
-            'mensaje' => 'A salido de su session con exito!',
+            'mensaje' => 'A cerrado la session con exito!',
         ],200);
 
     }
