@@ -14,7 +14,7 @@ class PatientController extends Controller
     public function index()
     {
         //
-        $patients = Patient::all();
+        $patients = Patient::paginate();
         return response()->json([
             'estatus'=> true,
             'datos'=> $patients

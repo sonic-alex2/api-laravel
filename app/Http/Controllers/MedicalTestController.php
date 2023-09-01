@@ -14,7 +14,7 @@ class MedicalTestController extends Controller
     public function index()
     {
         //
-        $medicalTest = MedicalTest::all();
+        $medicalTest = MedicalTest::paginate();
         return response()->json([
             'estatus'=> true,
             'datos'=> $medicalTest
