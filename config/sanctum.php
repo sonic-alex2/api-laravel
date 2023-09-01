@@ -46,7 +46,7 @@ return [
     |
     */
 
-    'expiration' => null,
+    'expiration' => 43200,
 
     /*
     |--------------------------------------------------------------------------
@@ -64,4 +64,5 @@ return [
         'encrypt_cookies' => App\Http\Middleware\EncryptCookies::class,
     ],
 
+    'token_prefix' => "",
 ];
