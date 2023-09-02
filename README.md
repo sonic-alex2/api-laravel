@@ -8,35 +8,116 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About Laravel
+## About de este proyecto
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+En el siguiente repositorio se podra encontrar los archivos php con el framework de laravel, una ves clonado el repositorio se debera crear una base de datos.
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+# Se debe de tener instalado php, y mysql
+# (se asume que el usuario mysql es root y esta sin contraseña)
+# si no editar los siguiente datos (en el archivo):
+```php
 
-## Learning Laravel
+DB_DATABASE=nombreDeBaseDeDatosQueCreaste
+DB_USERNAME=usurioCreado
+DB_PASSWORD=passwordCreado
+```
+# lo anterior en mi maquina local
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+# Crear un archivo con extencion ".env"
+# Pegar los siguiente, en el archivo creado:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+```php
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+APP_NAME=tarea-numeros-primo
+APP_ENV=local
+APP_KEY=base64:MdrqU37Vj3ecZYpSZaT1cATxgVHcE+mqZq2PLrUmwYU=
+APP_DEBUG=true
+APP_URL=http://tarea-numeros-primo
 
-## Laravel Sponsors
+LOG_CHANNEL=stack
+LOG_DEPRECATIONS_CHANNEL=null
+LOG_LEVEL=debug
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+DB_CONNECTION=mysql
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=tarea-numeros-primo
+DB_USERNAME=root
+DB_PASSWORD=
+
+BROADCAST_DRIVER=log
+CACHE_DRIVER=file
+FILESYSTEM_DISK=local
+QUEUE_CONNECTION=sync
+SESSION_DRIVER=file
+SESSION_LIFETIME=120
+
+MEMCACHED_HOST=127.0.0.1
+
+REDIS_HOST=127.0.0.1
+REDIS_PASSWORD=null
+REDIS_PORT=6379
+
+MAIL_MAILER=smtp
+MAIL_HOST=mailpit
+MAIL_PORT=1025
+MAIL_USERNAME=null
+MAIL_PASSWORD=null
+MAIL_ENCRYPTION=null
+MAIL_FROM_ADDRESS="hello@example.com"
+MAIL_FROM_NAME="${APP_NAME}"
+
+AWS_ACCESS_KEY_ID=
+AWS_SECRET_ACCESS_KEY=
+AWS_DEFAULT_REGION=us-east-1
+AWS_BUCKET=
+AWS_USE_PATH_STYLE_ENDPOINT=false
+
+PUSHER_APP_ID=
+PUSHER_APP_KEY=
+PUSHER_APP_SECRET=
+PUSHER_HOST=
+PUSHER_PORT=443
+PUSHER_SCHEME=https
+PUSHER_APP_CLUSTER=mt1
+
+VITE_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
+VITE_PUSHER_HOST="${PUSHER_HOST}"
+VITE_PUSHER_PORT="${PUSHER_PORT}"
+VITE_PUSHER_SCHEME="${PUSHER_SCHEME}"
+VITE_PUSHER_APP_CLUSTER="${PUSHER_APP_CLUSTER}"
+
+SANCTUM_TOKEN_PREFIX=""
+SESSION_DOMAIN=localhost
+SANCTUM_STATEFUL_DOMAINS=localhost:5173
+
+```
+# Por ultimo Correr el siguiente comando (se debe de tener como variable global en windows "php"):
+# se debe de correr el comando en la misma ubicacion que la raiz del todo el proyecto.
+
+# --> crea las tablas necesarias(si ya esta creada la base de datos y con los accesos correctos, con los servidor mysql funcionando)
+
+```php
+
+$ php artisan migrate:fresh
+
+#pone en ejecucion la aplicacion.
+$ php artisan serve
+
+#saldra un mensaje similar al siguiente:
+ INFO  Server running on [http://127.0.0.1:8000].
+
+#Crear un usario en el apartado "Register" (o similar)
+http://127.0.0.1:8000/register
+
+```
 
 ### Url para demos
 
 - **[Demo](https://api.blexzy.com/)**
+
+### Extras del framework utilizado.
 
 ## Contributing
 
@@ -56,3 +137,7 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 =======
 # tarea2-analisisDeSistemas2
 
+## Autor
+
+| [<img src="" width=115><br><sub>Jorge Ramos</sub>](https://avatars.githubusercontent.com/u/8519258?v=4) |
+| :---: |
