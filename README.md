@@ -140,5 +140,5 @@ The Laravel framework is open-sourced software licensed under the [MIT license](
 
 ## Autor
 
-| [<img src="" width=115><br><sub>Jorge Ramos</sub>](https://avatars.githubusercontent.com/u/8519258?v=4) |
+| [<img src="https://avatars.githubusercontent.com/u/8519258?v=4" width=115><br><sub>Jorge Ramos</sub>](https://github.com/sonic-alex2) |
 | :---: |
