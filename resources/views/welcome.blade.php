@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Laravel</title>
+        <title>{{ env('APP_NAME') }}</title>
 
         <!-- Fonts -->
         <link rel="preconnect" href="https://fonts.bunny.net">
@@ -29,23 +29,19 @@
                     @endauth
                 </div>
             @endif
-            <div class="text-center">
-                <h1 class="text-4xl font-extrabold text-gray-800 dark:text-white mb-4">Manual de API CRUD con Tailwind</h1>
-                <p class="text-lg text-gray-600 dark:text-gray-300">Aprende cómo utilizar la API para realizar operaciones CRUD (Crear, Leer, Actualizar, Eliminar).</p>
 
-                <div class="mt-8">
-                    <h2 class="text-2xl font-semibold text-gray-700 dark:text-white mb-2">Subtítulo 1: Configuración de la API</h2>
-                    <p class="text-base text-gray-600 dark:text-gray-300">Explora cómo configurar la API antes de comenzar con las operaciones CRUD.</p>
-                </div>
+            <div class="sm:fixed sm:top-0 sm:left-0 p-6 text-left z-10 mt-4 bg-white p-4 rounded-lg shadow-lg">
 
-                <div class="mt-8">
-                    <h2 class="text-2xl font-semibold text-gray-700 dark:text-white mb-2">Subtítulo 2: Operaciones CRUD</h2>
-                    <p class="text-base text-gray-600 dark:text-gray-300">Aprende a realizar operaciones CRUD paso a paso utilizando la API y Tailwind CSS.</p>
-                </div>
+                    <a href="{{ route('configuracion') }}" class="ml-4 font-semibold text-gray-900 hover:text-gray-900 dark:text-gray-500 dark:hover:text-dark focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Configuracion</a>
 
-                <!-- Agrega más subtítulos según sea necesario -->
+                    <a href="{{ route('paciente') }}" class="ml-4 font-semibold text-gray-900 hover:text-gray-900 dark:text-gray-500 dark:hover:text-dark focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Paciente</a>
+
+                    <a href="{{ route('p-medicas') }}" class="ml-4 font-semibold text-gray-900 hover:text-gray-900 dark:text-gray-500 dark:hover:text-dark focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Pruebas Medicas</a>
+
+                    <a href="{{ route('resultado') }}" class="ml-4 font-semibold text-gray-800 hover:text-gray-900 dark:text-gray-500 dark:hover:text-dark focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Resultados</a>
 
             </div>
+            @yield('content')
         </div>
     </body>
 </html>

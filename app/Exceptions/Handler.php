@@ -34,7 +34,7 @@ class Handler extends ExceptionHandler
             if($request->is('api/*')){
                 return response()->json([
                     'status'=> false,
-                    'mensaje' => '-dev-'.$e->getMessage()
+                    'mensaje' => 'dev: '.$e->getMessage()
                     //'mensaje' => 'uy, ocurrio un error!'
                 ,400]);
             }

@@ -76,7 +76,7 @@ class ApiAuthUserController extends Controller
             'acceso' => [
                 'tipo' => "Bearer",
                 //'toquen_acceso' => $tokenResult->accessToken,
-                'toquen' => $tokenResult->plainTextToken,
+                'token' => $tokenResult->plainTextToken,
             ],
         ],200);
     }

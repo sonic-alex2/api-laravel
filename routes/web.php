@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IndexController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,9 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('configuracion',[IndexController::class,'configuracion'])->name('configuracion');
+Route::get('paciente',[IndexController::class,'paciente'])->name('paciente');
+Route::get('p-medicas',[IndexController::class,'pmedicas'])->name('p-medicas');
+Route::get('resultado',[IndexController::class,'resultado'])->name('resultado');
+
