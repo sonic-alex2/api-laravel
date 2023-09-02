@@ -1,6 +1,7 @@
 
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+# tarea2-analisisDeSistemas2
 
+## Datos de laravel
 <p align="center">
 <a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
@@ -13,19 +14,19 @@
 En el siguiente repositorio se podra encontrar los archivos php con el framework de laravel, una ves clonado el repositorio se debera crear una base de datos.
 
 
-# Se debe de tener instalado php, y mysql
-# (se asume que el usuario mysql es root y esta sin contraseña)
-# si no editar los siguiente datos (en el archivo):
+## Se debe de tener instalado php, y mysql
+## (se asume que el usuario mysql es root y esta sin contraseña)
+## si no editar los siguiente datos (en el archivo):
 ```php
 
 DB_DATABASE=nombreDeBaseDeDatosQueCreaste
 DB_USERNAME=usurioCreado
 DB_PASSWORD=passwordCreado
 ```
-# lo anterior en mi maquina local
+## lo anterior en mi maquina local
 
-# Crear un archivo con extencion ".env"
-# Pegar los siguiente, en el archivo creado:
+## Crear un archivo con extencion ".env"
+## Pegar los siguiente, en el archivo creado:
 
 ```php
 
@@ -93,10 +94,10 @@ SESSION_DOMAIN=localhost
 SANCTUM_STATEFUL_DOMAINS=localhost:5173
 
 ```
-# Por ultimo Correr el siguiente comando (se debe de tener como variable global en windows "php"):
-# se debe de correr el comando en la misma ubicacion que la raiz del todo el proyecto.
+## Por ultimo Correr el siguiente comando (se debe de tener como variable global en windows "php"):
+## se debe de correr el comando en la misma ubicacion que la raiz del todo el proyecto.
 
-# --> crea las tablas necesarias(si ya esta creada la base de datos y con los accesos correctos, con los servidor mysql funcionando)
+## --> crea las tablas necesarias(si ya esta creada la base de datos y con los accesos correctos, con los servidor mysql funcionando)
 
 ```php
 
@@ -135,7 +136,7 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
 =======
-# tarea2-analisisDeSistemas2
+
 
 ## Autor
 
