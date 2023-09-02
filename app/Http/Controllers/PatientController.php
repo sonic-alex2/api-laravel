@@ -27,7 +27,11 @@ class PatientController extends Controller
     public function store(Request $request)
     {
         //
-        $rules = ['nombre' => 'required'];
+        $rules = ['nombre' => 'required',
+                'edad' => 'required|numeric|min:18|max:100',
+                'genero' => 'required|in:m,f',
+                'fecha_ingreso' => 'required|date',
+            ];
 
         $validator = Validator::make($request->all(),$rules);
 
@@ -53,6 +57,13 @@ class PatientController extends Controller
     public function show(Patient $patient)
     {
         //
+        if(!$patient){
+            return response()->json([
+                'estatus' => false,
+                'mensaje' => "Registro no encontrado!",
+            ],404);
+        }
+
         return response()->json([
             'estatus' => true,
             'datos' => $patient,
@@ -65,7 +76,18 @@ class PatientController extends Controller
     public function update(Request $request, Patient $patient)
     {
         //
-        $rules= ['nombre' => 'required'];
+        if(!$patient){
+            return response()->json([
+                'estatus' => false,
+                'mensaje' => "Registro no encontrado!",
+            ],404);
+        }
+
+        $rules= ['nombre' => 'required',
+            'edad' => 'required|numeric|min:18|max:100',
+            'genero' => 'required|in:m,f',
+            'fecha_ingreso' => 'required|date',
+        ];
 
         $validator = Validator::make($request->all(),$rules);
 
@@ -89,7 +111,13 @@ class PatientController extends Controller
      */
     public function destroy(Patient $patient)
     {
-        //
+        if(!$patient){
+            return response()->json([
+                'estatus' => false,
+                'mensaje' => "Registro no encontrado!",
+            ],404);
+        }
+
         $patient->delete();
 
         return response()->json([

@@ -27,7 +27,11 @@ class MedicalTestController extends Controller
     public function store(Request $request)
     {
         //
-        $rules = ['nombre' => 'required'];
+        $rules = ['nombre' => 'required|string',
+                'tipo' => 'required|string',
+                'costo' => 'required|numeric|min:0.01|max:999999.99',
+                'tiempo_resultado' => 'required|date',
+        ];
 
         $validator = Validator::make($request->all(),$rules);
 
@@ -52,6 +56,13 @@ class MedicalTestController extends Controller
     public function show(MedicalTest $medicalTest)
     {
         //
+        if(!$medicalTest){
+            return response()->json([
+                'estatus' => false,
+                'mensaje' => "Registro no encontrado!",
+            ],404);
+        }
+
         return response()->json([
             'estatus' => true,
             'datos' => $medicalTest,
@@ -64,7 +75,18 @@ class MedicalTestController extends Controller
     public function update(Request $request, MedicalTest $medicalTest)
     {
         //
-        $rules= ['nombre' => 'required'];
+        if(!$medicalTest){
+            return response()->json([
+                'estatus' => false,
+                'mensaje' => "Registro no encontrado!",
+            ],404);
+        }
+
+        $rules= ['nombre' => 'required|string',
+            'tipo' => 'required|string',
+            'costo' => 'required|numeric|min:0.01|max:999999.99',
+            'tiempo_resultado' => 'required|date',
+        ];
 
         $validator = Validator::make($request->all(),$rules);
 
@@ -89,6 +111,13 @@ class MedicalTestController extends Controller
     public function destroy(MedicalTest $medicalTest)
     {
         //
+        if(!$medicalTest){
+            return response()->json([
+                'estatus' => false,
+                'mensaje' => "Registro no encontrado!",
+            ],404);
+        }
+
         $medicalTest->delete();
 
         return response()->json([

@@ -30,10 +30,10 @@ class ResultController extends Controller
     public function store(Request $request)
     {
         //
-        $rules = ['id_paciente' => 'required',
-                'id_prueba' => 'required',
-                'fecha_resultado' => 'required',
-                'resultado' => 'required',
+        $rules = ['id_paciente' => 'required|exists:patients,id_paciente',
+            'id_prueba' => 'required|exists:medical_tests,id_prueba',
+            'fecha_resultado' => 'required|date',
+            'resultado' => 'required|string',
         ];
 
         $validator = Validator::make($request->all(),$rules);
@@ -59,6 +59,13 @@ class ResultController extends Controller
     public function show(Result $result)
     {
         //
+        if(!$result){
+            return response()->json([
+                'estatus' => false,
+                'mensaje' => "Registro no encontrado!",
+            ],404);
+        }
+
         return response()->json([
             'estatus' => true,
             'datos' => $result,
@@ -71,10 +78,17 @@ class ResultController extends Controller
     public function update(Request $request, Result $result)
     {
         //
-        $rules = ['id_paciente' => 'required',
-                'id_prueba' => 'required',
-                'fecha_resultado' => 'required',
-                'resultado' => 'required',
+        if(!$result){
+            return response()->json([
+                'estatus' => false,
+                'mensaje' => "Registro no encontrado!",
+            ],404);
+        }
+
+        $rules = ['id_paciente' => 'required|exists:patients,id_paciente',
+                'id_prueba' => 'required|exists:medical_tests,id_prueba',
+                'fecha_resultado' => 'required|date',
+                'resultado' => 'required|string',
         ];
 
         $validator = Validator::make($request->all(),$rules);
@@ -100,6 +114,13 @@ class ResultController extends Controller
     public function destroy(Result $result)
     {
         //
+        if(!$result){
+            return response()->json([
+                'estatus' => false,
+                'mensaje' => "Registro no encontrado!",
+            ],404);
+        }
+
         $result->delete();
 
         return response()->json([

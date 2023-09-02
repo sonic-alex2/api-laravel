@@ -29,16 +29,39 @@ class Handler extends ExceptionHandler
             //
         });
 
-        $this->renderable(function (Throwable $e, $request) {
+        $this->renderable(function (NotFoundHttpException $e, $request) {
             //
-            if($request->is('api/*')){
+
+
+            if($request->is('api/pacientes/*')){
+                return response()->json([
+                    'status'=> false,
+                    'mensaje' => 'uy, No se encontro el paciente!'
+                ,404]);
+            }else
+
+            if($request->is('api/p-medicas/*')){
+                return response()->json([
+                    'status'=> false,
+                    'mensaje' => 'uy, No se encontro la prueba!'
+                ,404]);
+            }
+
+            if($request->is('api/resultados/*')){
+                return response()->json([
+                    'status'=> false,
+                    'mensaje' => 'uy, No se encontro el resultado!'
+                ,404]);
+            }
+
+            /* if($request->is('api/*')){
                 return response()->json([
                     'status'=> false,
                     'mensaje' => 'dev: '.$e->getMessage()
                     //'mensaje' => 'uy, ocurrio un error!'
                 ,400]);
             }
-
+            */
         });
     }
 }
