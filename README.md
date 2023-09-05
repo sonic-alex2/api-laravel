@@ -113,6 +113,68 @@ $ php artisan serve
 http://127.0.0.1:8000/register
 
 ```
+### Esquema de base de datos
+
+
+```sql
+
+CREATE TABLE users (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255) UNIQUE NOT NULL,
+    email_verified_at TIMESTAMP NULL,
+    password VARCHAR(255) NOT NULL,
+    remember_token VARCHAR(100),
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
+);
+
+
+CREATE TABLE personal_access_tokens (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    tokenable_id INT NOT NULL,
+    tokenable_type VARCHAR(255) NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    token CHAR(64) UNIQUE NOT NULL,
+    abilities TEXT,
+    last_used_at TIMESTAMP NULL,
+    expires_at TIMESTAMP NULL,
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
+);
+
+CREATE TABLE patients (
+    id_paciente INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    edad INT,
+    genero ENUM('m', 'f'),
+    fecha_ingreso DATE,
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
+);
+
+CREATE TABLE medical_tests (
+    id_prueba INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(255) NOT NULL,
+    tipo VARCHAR(255) COMMENT 'los tipos de prueba',
+    costo DOUBLE,
+    tiempo_resultado TIMESTAMP,
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL
+);
+
+CREATE TABLE results (
+    id_resultado INT AUTO_INCREMENT PRIMARY KEY,
+    id_paciente INT ,
+    id_prueba INT ,
+    fecha_resultado DATE,
+    resultado VARCHAR(255),
+    created_at TIMESTAMP NULL,
+    updated_at TIMESTAMP NULL,
+    FOREIGN KEY (id_paciente) REFERENCES patients(id_paciente) ON UPDATE CASCADE,
+    FOREIGN KEY (id_prueba) REFERENCES medical_tests(id_prueba) ON UPDATE CASCADE
+);
+```
 
 ### Url para demos
 
