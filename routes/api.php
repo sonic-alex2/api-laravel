@@ -3,7 +3,6 @@
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\PatientController;
-use App\Http\Controllers\ApiAuthUserController;
 use App\Http\Controllers\MedicalTestController;
 use App\Http\Controllers\ResultController;
 
@@ -17,33 +16,26 @@ use App\Http\Controllers\ResultController;
 | be assigned to the "api" middleware group. Make something great!
 |
 */
-Route::post('auth/registro',[ApiAuthUserController::class,'store']);
-Route::post('auth/ingresar',[ApiAuthUserController::class,'login']);
+Route::apiResource('pacientes', PatientController::class,[
+    /* 'names' => [
+        'index' => 'lista-pacientes',
+        'create' => 'crear-paciente',
+    ], */
+    'parameters' => [
+        'pacientes' => 'patient',
+    ],
+]);
 
-Route::middleware('auth:sanctum')->group( function () {
-    Route::apiResource('pacientes', PatientController::class,[
-        /* 'names' => [
-            'index' => 'lista-pacientes',
-            'create' => 'crear-paciente',
-        ], */
-        'parameters' => [
-            'pacientes' => 'patient',
-        ],
-    ]);
+Route::apiResource('p-medicas', MedicalTestController::class,[
+    'parameters' => [
+        'p-medicas' => 'medicalTest',
+    ],
+]);
 
-    Route::apiResource('p-medicas', MedicalTestController::class,[
-        'parameters' => [
-            'p-medicas' => 'medicalTest',
-        ],
-    ]);
-
-    Route::apiResource('resultados', ResultController::class,[
-        'parameters' => [
-            'resultados' => 'result',
-        ],
-    ]);
-
-    Route::get('auth/salir',[ApiAuthUserController::class,'logout']);
-});
+Route::apiResource('resultados', ResultController::class,[
+    'parameters' => [
+        'resultados' => 'result',
+    ],
+]);
 
 

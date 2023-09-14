@@ -32,8 +32,6 @@
 
             <div class="sm:fixed sm:top-0 sm:left-0 p-6 text-left z-10 mt-4 bg-white p-4 rounded-lg shadow-lg">
 
-                    <a href="{{ route('configuracion') }}" class="ml-4 font-semibold text-gray-900 hover:text-gray-900 dark:text-gray-500 dark:hover:text-dark focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Configuracion</a>
-
                     <a href="{{ route('paciente') }}" class="ml-4 font-semibold text-gray-900 hover:text-gray-900 dark:text-gray-500 dark:hover:text-dark focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Paciente</a>
 
                     <a href="{{ route('p-medicas') }}" class="ml-4 font-semibold text-gray-900 hover:text-gray-900 dark:text-gray-500 dark:hover:text-dark focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Pruebas Medicas</a>

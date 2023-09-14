@@ -46,7 +46,7 @@ class PatientController extends Controller
 
         return response()->json([
             'estatus' => true,
-            'mensaje' => "Se creo el paciente!",
+            'mensaje' => "Se creo el registro!",
         ],200);
 
     }
@@ -102,7 +102,7 @@ class PatientController extends Controller
 
         return response()->json([
             'estatus' => true,
-            'mensaje' => "Se actualizo el paciente!",
+            'mensaje' => "Se actualizo el registro!",
         ],200);
     }
 
@@ -122,7 +122,7 @@ class PatientController extends Controller
 
         return response()->json([
             'estatus' => true,
-            'mensaje' => "Paciente eliminado!",
+            'mensaje' => "Registro eliminado!",
         ],200);
     }
 }

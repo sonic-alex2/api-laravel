@@ -46,7 +46,7 @@ class MedicalTestController extends Controller
 
         return response()->json([
             'estatus' => true,
-            'mensaje' => "Se creo la prueba medica!",
+            'mensaje' => "Se creo el registro!",
         ],200);
     }
 
@@ -101,7 +101,7 @@ class MedicalTestController extends Controller
 
         return response()->json([
             'estatus' => true,
-            'mensaje' => "Se actualizo la prueba medica!",
+            'mensaje' => "Se actualizo el registro!",
         ],200);
     }
 
@@ -122,7 +122,7 @@ class MedicalTestController extends Controller
 
         return response()->json([
             'estatus' => true,
-            'mensaje' => "Prueba medica eliminada!",
+            'mensaje' => "Registro eliminado!",
         ],200);
     }
 }

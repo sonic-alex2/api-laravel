@@ -49,7 +49,7 @@ class ResultController extends Controller
 
         return response()->json([
             'estatus' => true,
-            'mensaje' => "Se creo el resultado!",
+            'mensaje' => "Se creo el registro!",
         ],200);
     }
 
@@ -104,7 +104,7 @@ class ResultController extends Controller
 
         return response()->json([
             'estatus' => true,
-            'mensaje' => "Se actualizo el resultado!",
+            'mensaje' => "Se actualizo el registro!",
         ],200);
     }
 
@@ -125,7 +125,7 @@ class ResultController extends Controller
 
         return response()->json([
             'estatus' => true,
-            'mensaje' => "Resultado eliminado!",
+            'mensaje' => "Registro eliminado!",
         ],200);
     }
 }

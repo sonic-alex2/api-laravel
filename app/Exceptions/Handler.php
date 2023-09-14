@@ -2,10 +2,14 @@
 
 namespace App\Exceptions;
 
+use Throwable;
+use Illuminate\Database\QueryException;
+
+use Illuminate\Validation\ValidationException;
+use Illuminate\Auth\Access\AuthorizationException;
+use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
 use Symfony\Component\HttpKernel\Exception\NotFoundHttpException;
-
-use Throwable;
 
 class Handler extends ExceptionHandler
 {
@@ -29,39 +33,116 @@ class Handler extends ExceptionHandler
             //
         });
 
-        $this->renderable(function (NotFoundHttpException $e, $request) {
+        /* $this->renderable(function (NotFoundHttpException $e, $request) {
             //
-
-
             if($request->is('api/pacientes/*')){
                 return response()->json([
                     'status'=> false,
-                    'mensaje' => 'uy, No se encontro el paciente!'
+                    'mensaje' => 'uy, No se encontró el paciente!'
                 ,404]);
             }else
 
             if($request->is('api/p-medicas/*')){
                 return response()->json([
                     'status'=> false,
-                    'mensaje' => 'uy, No se encontro la prueba!'
+                    'mensaje' => 'uy, No se encontró la prueba!'
                 ,404]);
             }
 
             if($request->is('api/resultados/*')){
                 return response()->json([
                     'status'=> false,
-                    'mensaje' => 'uy, No se encontro el resultado!'
+                    'mensaje' => 'uy, No se encontró el resultado!'
                 ,404]);
             }
+        }); */
 
-            /* if($request->is('api/*')){
-                return response()->json([
-                    'status'=> false,
-                    'mensaje' => 'dev: '.$e->getMessage()
-                    //'mensaje' => 'uy, ocurrio un error!'
-                ,400]);
+        $this->renderable(function (\Throwable $e, $request) {
+            if ($request->is('api/pacientes/*')) {
+                if ($e instanceof NotFoundHttpException) {
+                    return response()->json([
+                        'status' => false,
+                        'mensaje' => 'Uy, No se encontró el paciente!'
+                    ], 404);
+                } elseif ($e instanceof ValidationException) {
+                    return response()->json([
+                        'status' => false,
+                        'mensaje' => 'Error de validación: ' . $e->getMessage(),
+                        'errores' => $e->errors(),
+                    ], 422);
+                } elseif ($e instanceof ModelNotFoundException) {
+                    return response()->json([
+                        'status' => false,
+                        'mensaje' => 'El modelo solicitado no se encontró.',
+                    ], 404);
+                } elseif ($e instanceof AuthorizationException) {
+                    return response()->json([
+                        'status' => false,
+                        'mensaje' => 'No tienes permiso para realizar esta acción.',
+                    ], 403);
+                } elseif ($e instanceof QueryException) {
+                    return response()->json([
+                        'status' => false,
+                        'mensaje' => 'Error en la consulta de base de datos: ' . $e->getMessage(),
+                    ], 500);
+                }
+            } elseif ($request->is('api/p-medicas/*')) {
+                if ($e instanceof NotFoundHttpException) {
+                    return response()->json([
+                        'status' => false,
+                        'mensaje' => 'Uy, No se encontró las pruebas!'
+                    ], 404);
+                } elseif ($e instanceof ValidationException) {
+                    return response()->json([
+                        'status' => false,
+                        'mensaje' => 'Error de validación: ' . $e->getMessage(),
+                        'errores' => $e->errors(),
+                    ], 422);
+                } elseif ($e instanceof ModelNotFoundException) {
+                    return response()->json([
+                        'status' => false,
+                        'mensaje' => 'El modelo solicitado no se encontró.',
+                    ], 404);
+                } elseif ($e instanceof AuthorizationException) {
+                    return response()->json([
+                        'status' => false,
+                        'mensaje' => 'No tienes permiso para realizar esta acción.',
+                    ], 403);
+                } elseif ($e instanceof QueryException) {
+                    return response()->json([
+                        'status' => false,
+                        'mensaje' => 'Error en la consulta de base de datos: ' . $e->getMessage(),
+                    ], 500);
+                }
+            } elseif ($request->is('api/resultados/*')) {
+                if ($e instanceof NotFoundHttpException) {
+                    return response()->json([
+                        'status' => false,
+                        'mensaje' => 'Uy, No se encontró el resultado!'
+                    ], 404);
+                } elseif ($e instanceof ValidationException) {
+                    return response()->json([
+                        'status' => false,
+                        'mensaje' => 'Error de validación: ' . $e->getMessage(),
+                        'errores' => $e->errors(),
+                    ], 422);
+                } elseif ($e instanceof ModelNotFoundException) {
+                    return response()->json([
+                        'status' => false,
+                        'mensaje' => 'El modelo solicitado no se encontró.',
+                    ], 404);
+                } elseif ($e instanceof AuthorizationException) {
+                    return response()->json([
+                        'status' => false,
+                        'mensaje' => 'No tienes permiso para realizar esta acción.',
+                    ], 403);
+                } elseif ($e instanceof QueryException) {
+                    return response()->json([
+                        'status' => false,
+                        'mensaje' => 'Error en la consulta de base de datos: ' . $e->getMessage(),
+                    ], 500);
+                }
             }
-            */
         });
     }
 }

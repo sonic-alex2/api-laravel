@@ -29,6 +29,6 @@ return [
 
     'max_age' => 0,
 
-    'supports_credentials' => true, //se activa para api
+    'supports_credentials' => false, //se activa para api
 
 ];
