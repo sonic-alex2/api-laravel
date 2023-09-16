@@ -1,5 +1,5 @@
 
-# tarea2-analisisDeSistemas2
+# laravel API
 
 ## Datos de laravel
 <p align="center">
@@ -9,9 +9,9 @@
 <a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
 </p>
 
-## About de este proyecto
+## Acerca de este proyecto
 
-En el siguiente repositorio se podra encontrar los archivos php con el framework de laravel, una ves clonado el repositorio se debera crear una base de datos.
+En el siguiente repositorio se podrá encontrar los archivos php con el framework de laravel, una ves clonado el repositorio se deberá crear una base de datos.
 
 
 ## Se debe de tener instalado php, y mysql
@@ -19,22 +19,22 @@ En el siguiente repositorio se podra encontrar los archivos php con el framework
 ## si no editar los siguiente datos (en el archivo):
 ```php
 
-DB_DATABASE=nombreDeBaseDeDatosQueCreaste
+DB_DATABASE=lara10-api-LabClinicoSinAuth
 DB_USERNAME=usurioCreado
 DB_PASSWORD=passwordCreado
 ```
 ## lo anterior en mi maquina local
 
-## Crear un archivo con extencion ".env"
+## Crear un archivo con extension ".env"
 ## Pegar los siguiente, en el archivo creado:
 
 ```php
 
-APP_NAME=tarea-numeros-primo
-APP_ENV=local
-APP_KEY=base64:MdrqU37Vj3ecZYpSZaT1cATxgVHcE+mqZq2PLrUmwYU=
-APP_DEBUG=true
-APP_URL=http://tarea-numeros-primo
+APP_NAME=lara10-api-LabClinicoSinAuth
+APP_ENV=production
+APP_KEY=base64:UyhcJSbHw/hJrZVmuLrefIHAZ/Ur33y9dTAddKwKEdA=
+APP_DEBUG=false
+APP_URL=http://lara10-api-LabClinicoSinAuth.test
 
 LOG_CHANNEL=stack
 LOG_DEPRECATIONS_CHANNEL=null
@@ -43,16 +43,17 @@ LOG_LEVEL=debug
 DB_CONNECTION=mysql
 DB_HOST=127.0.0.1
 DB_PORT=3306
-DB_DATABASE=tarea-numeros-primo
+DB_DATABASE=lara10-api-LabClinicoSinAuth
 DB_USERNAME=root
 DB_PASSWORD=
-
+g
 BROADCAST_DRIVER=log
 CACHE_DRIVER=file
 FILESYSTEM_DISK=local
 QUEUE_CONNECTION=sync
-SESSION_DRIVER=file
+SESSION_DRIVER=cookie
 SESSION_LIFETIME=120
+
 
 MEMCACHED_HOST=127.0.0.1
 
@@ -83,6 +84,7 @@ PUSHER_PORT=443
 PUSHER_SCHEME=https
 PUSHER_APP_CLUSTER=mt1
 
+VITE_APP_NAME="${APP_NAME}"
 VITE_PUSHER_APP_KEY="${PUSHER_APP_KEY}"
 VITE_PUSHER_HOST="${PUSHER_HOST}"
 VITE_PUSHER_PORT="${PUSHER_PORT}"
@@ -95,7 +97,7 @@ SANCTUM_STATEFUL_DOMAINS=localhost:5173
 
 ```
 ## Por ultimo Correr el siguiente comando (se debe de tener como variable global en windows "php"):
-## se debe de correr el comando en la misma ubicacion que la raiz del todo el proyecto.
+## se debe de correr el comando en la misma ubicación que la raíz del todo el proyecto.
 
 ## --> crea las tablas necesarias(si ya esta creada la base de datos y con los accesos correctos, con los servidor mysql funcionando)
 
@@ -103,14 +105,12 @@ SANCTUM_STATEFUL_DOMAINS=localhost:5173
 
 $ php artisan migrate:fresh
 
-#pone en ejecucion la aplicacion.
-$ php artisan serve
+#pone en ejecución la aplicación se debe de agregar en el archivo "C:\Windows\System32\drivers\etc".
+$ php artisan serve --host=lara10-api-labclinicosinauth.test --port=9000
 
-#saldra un mensaje similar al siguiente:
+#saldrá un mensaje similar al siguiente o el nombre de donde se inicio el server:
  INFO  Server running on [http://127.0.0.1:8000].
 
-#Crear un usario en el apartado "Register" (o similar)
-http://127.0.0.1:8000/register
 
 ```
 ### Esquema de base de datos
@@ -176,19 +176,11 @@ CREATE TABLE results (
 );
 ```
 
-### Url para demos
+### Url para la demostración en linea.
 
-- **[Demo](https://api.blexzy.com/)**
+- **[Demostración link](https://api.blexzy.com/)**
 
 ### Extras del framework utilizado.
-
-## Contributing
-
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
-
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
 ## Security Vulnerabilities
 
